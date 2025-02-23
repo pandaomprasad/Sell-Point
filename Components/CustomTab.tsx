@@ -9,6 +9,7 @@ import {
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 // import { Home, Search, PlusCircle, Clock, User } from 'lucide-react-native';
 import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -42,10 +43,10 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tab}
-          onPress={() => navigation.navigate("Sell")}
+          onPress={() => navigation.navigate("MyAds")}
         >
-          <AntDesign
-            name="search1"
+          <MaterialCommunityIcons
+            name="notebook-outline"
             size={24}
             color={state.index === 1 ? "#6C63FF" : "#757575"}
             strokeWidth={state.index === 1 ? 5.5 : 2}
@@ -56,7 +57,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
               { color: state.index === 1 ? "#6C63FF" : "#757575" },
             ]}
           >
-            Search
+            My Ads
           </Text>
         </TouchableOpacity>
       </View>
@@ -81,7 +82,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
       <View style={styles.section}>
         <TouchableOpacity
           style={styles.tab}
-          onPress={() => navigation.navigate("Sell")}
+          onPress={() => navigation.navigate("History")}
         >
           <AntDesign
             name="clockcircleo"
@@ -100,7 +101,7 @@ export const CustomTabBar: React.FC<BottomTabBarProps> = ({
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.tab}
-          onPress={() => navigation.navigate("Sell")}
+          onPress={() => navigation.navigate("Profile")}
         >
           <AntDesign
             name="user"
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ddd",
     borderTopWidth: 1,
     borderTopColor: "#F0F0F0",
-    height:height*0.09
+    height: height * 0.09,
   },
   section: {
     flex: 1,

@@ -13,19 +13,25 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Details">;
 
 interface RecomendationsProps {
   searchQuery: string;
+  selectedCategory: string | null;
 }
 
-const Recomendations: React.FC<RecomendationsProps> = ({ searchQuery }) => {
+const Recomendations: React.FC<RecomendationsProps> = ({ searchQuery, selectedCategory }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation<NavigationProp>();
   const products = useSelector((state: RootState) => state.product.productList);
 
-  // Filter products based on the search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.company.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter products based on search query and category
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.company.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+
+    return matchesSearch && matchesCategory;
+  });
 
   const handlePress = (product: any) => {
     dispatch(setProduct(product));
@@ -55,4 +61,4 @@ const Recomendations: React.FC<RecomendationsProps> = ({ searchQuery }) => {
 
 export default Recomendations;
 
-// Now your recommendations filter live based on the search query! Let me know if you want any tweaks! 🚀
+// Now your recommendations filter based on both search query and category! Let me know if you want any tweaks! 🚀

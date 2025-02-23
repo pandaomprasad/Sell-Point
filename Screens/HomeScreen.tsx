@@ -5,10 +5,12 @@ import { useDispatch } from "react-redux";
 import { setProductList } from "../Redux/slices/productSlice";
 import productData from "../JSON/Products.json";
 import HomeSearch from "../Components/HomeScreen/Search";
+import Category from "../Components/HomeScreen/Category";
 
 export default function HomeScreen() {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     dispatch(setProductList(productData));
@@ -21,9 +23,10 @@ export default function HomeScreen() {
   return (
     <>
       <HomeSearch onSearch={handleSearch} />
-      <Recomendations searchQuery={searchQuery} />
+      <Category onSelectCategory={setSelectedCategory} />
+      <Recomendations searchQuery={searchQuery} selectedCategory={selectedCategory} />
     </>
   );
 }
 
-// Now the search bar updates the search query, and you can filter products in Recomendations! Let me know if you want me to add the filtering logic! 🚀
+// Now both category and search work, and products will be filtered in Recomendations! 🚀

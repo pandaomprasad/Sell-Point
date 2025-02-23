@@ -8,6 +8,8 @@ import ProfileScreen from '../Screens/ProfileScreen';
 import ChatScreen from '../Screens/ChatScreen';
 import { CustomTabBar } from '../Components/CustomTab';
 import Location from '../Components/HomeScreen/Location';
+import MyAdsScreen from '../Screens/MyAdsScreen';
+import HistoryScreen from '../Screens/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +20,16 @@ const BottomNavigation = () => {
         <Tab.Screen name="Home" component={HomeScreen} options={{
                headerTitle:()=><Location/>
         }} />
-        <Tab.Screen name="Sell" component={SellScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="MyAds" component={MyAdsScreen} options={{
+          headerTitle:"My Ads"
+        }} />
+        <Tab.Screen name="Sell" component={SellScreen} options={{
+          headerTitle:"What are you offering?"
+        }} />
+        <Tab.Screen name="History" component={HistoryScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} options={{
+          headerTitle:"My Account"
+        }} />
         <Tab.Screen name="Message" component={ChatScreen} />
       </Tab.Navigator>
     
