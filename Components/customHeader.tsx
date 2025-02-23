@@ -4,14 +4,18 @@ import Location from "./HomeScreen/Location";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../Navigation/navigation";
 
 const CustomHeader = () => {
   const notificationCount = useSelector((state: RootState) => state.product.notifications);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.headerContainer}>
       <Location />
-      <TouchableOpacity style={styles.iconContainer}>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("Notification")}>
         <Ionicons name="notifications-sharp" size={24} color="black" />
         {notificationCount > 0 && (
           <View style={styles.badge}>
@@ -53,4 +57,4 @@ const styles = StyleSheet.create({
 
 export default CustomHeader;
 
-// The notification icon now shows the count directly from Redux! Let me know if you’d like any adjustments. 🚀
+// Now the navigation is type-safe, and it should navigate to the Notification screen without errors! 🚀

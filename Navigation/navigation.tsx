@@ -8,6 +8,7 @@ import { Product } from "../Redux/slices/productSlice";
 import { RouteProp } from "@react-navigation/native";
 import ChatScreen from "../Screens/ChatScreen";
 import MakeOffer from "../Screens/MakeOffer";
+import NotificationScreen from "../Screens/NotificationScreen";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   Chat: { productId: string; productName: string };
   MakeOffer: { productId: string; productName: string; productPrice: number };
   Main: undefined;
+  Notification:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,6 +41,7 @@ const StackNavigation = () => {
         />
         <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="MakeOffer" component={MakeOffer} />
+        <Stack.Screen name="Notification" component={NotificationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
