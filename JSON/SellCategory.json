@@ -1,0 +1,67 @@
+[
+               {
+                              "id": 0,
+                              "name": "All",
+                              "svgSize": 80
+               },
+               {
+                              "id": 1,
+                              "name": "Car",
+                              "svgSize": 80
+               },
+               {
+                              "id": 2,
+                              "name": "Bike",
+                              "svgSize": 80
+               },
+               {
+                              "id": 3,
+                              "name": "Property",
+                              "svgSize": 80
+               },
+               {
+                              "id": 4,
+                              "name": "Job",
+                              "svgSize": 80
+               },
+               {
+                              "id": 5,
+                              "name": "Mobiles",
+                              "svgSize": 80
+               },
+               {
+                              "id": 6,
+                              "name": "Pets",
+                              "svgSize": 80
+               },
+               {
+                              "id": 7,
+                              "name": "Electronics & Appliances",
+                              "svgSize": 80
+               },
+               {
+                              "id": 8,
+                              "name": "Commercial Vechicle & Spares",
+                              "svgSize": 80
+               },
+               {
+                              "id": 9,
+                              "name": "Furniture",
+                              "svgSize": 80
+               },
+               {
+                              "id": 10,
+                              "name": "Fashion",
+                              "svgSize": 80
+               },
+               {
+                              "id": 11,
+                              "name": "Books,Sports,Hobbies",
+                              "svgSize": 80
+               },
+               {
+                              "id": 12,
+                              "name": "Services",
+                              "svgSize": 80
+               }
+]

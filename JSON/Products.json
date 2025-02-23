@@ -1,0 +1,479 @@
+[
+               {
+                              "product_id": "P1",
+                              "name": "Mountain Bike",
+                              "company": "Trek",
+                              "model": "X-Caliber 8",
+                              "category": "Sports & Outdoors",
+                              "seller": {
+                                             "name": "Bike World",
+                                             "address": "123 Cycle Lane, Denver, CO"
+                              },
+                              "price": 299.99,
+                              "image_url": "https://example.com/images/bike.jpg",
+                              "description": "Durable and lightweight mountain bike for all terrains."
+               },
+               {
+                              "product_id": "P2",
+                              "name": "Sedan Car",
+                              "company": "Audi",
+                              "model": "A4",
+                              "category": "Car",
+                              "fuel_type": "Petrol",
+                              "seller": {
+                                             "name": "Auto Hub",
+                                             "address": "456 Car Avenue, Detroit, MI"
+                              },
+                              "price": 19999.99,
+                              "image_url": "https://example.com/images/car.jpg",
+                              "description": "Fuel-efficient and spacious sedan with advanced safety features."
+               },
+               {
+                              "product_id": "P3",
+                              "name": "Smartphone X12",
+                              "company": "Samsung",
+                              "model": "Galaxy S21",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Mobile Express",
+                                             "address": "789 Tech Street, San Francisco, CA"
+                              },
+                              "price": 899.99,
+                              "image_url": "https://example.com/images/smartphone.jpg",
+                              "description": "Latest smartphone with high-speed processor and stunning display."
+               },
+               {
+                              "product_id": "P4",
+                              "name": "Luxury Apartment",
+                              "company": "Skyline Realty",
+                              "model": "Penthouse Suite",
+                              "category": "Real Estate",
+                              "seller": {
+                                             "name": "Realty Experts",
+                                             "address": "321 Skyline Towers, New York, NY"
+                              },
+                              "price": 250000.00,
+                              "image_url": "https://example.com/images/property.jpg",
+                              "description": "Spacious luxury apartment with modern amenities and city views."
+               },
+               {
+                              "product_id": "P5",
+                              "name": "Bestselling Novel",
+                              "company": "Penguin Books",
+                              "model": "Hardcover Edition",
+                              "category": "Books",
+                              "seller": {
+                                             "name": "Book Haven",
+                                             "address": "567 Literature Lane, Chicago, IL"
+                              },
+                              "price": 19.99,
+                              "image_url": "https://example.com/images/book.jpg",
+                              "description": "A captivating novel from a bestselling author."
+               },
+               {
+                              "product_id": "P6",
+                              "name": "Smart Watch Pro",
+                              "company": "Apple",
+                              "model": "Series 7",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Gadget Galaxy",
+                                             "address": "654 Innovation Road, Seattle, WA"
+                              },
+                              "price": 149.99,
+                              "image_url": "https://example.com/images/smartwatch.jpg",
+                              "description": "Feature-rich smartwatch with fitness tracking and notifications."
+               },
+               {
+                              "product_id": "P7",
+                              "name": "Gaming Laptop",
+                              "company": "Asus",
+                              "model": "ROG Strix G15",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "PC Masters",
+                                             "address": "789 Tech Park, Austin, TX"
+                              },
+                              "price": 1499.99,
+                              "image_url": "https://example.com/images/laptop.jpg",
+                              "description": "High-performance gaming laptop with RGB lighting and powerful GPU."
+               },
+               {
+                              "product_id": "P8",
+                              "name": "Wireless Earbuds",
+                              "company": "Sony",
+                              "model": "WF-1000XM4",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Audio Haven",
+                                             "address": "101 Sound Street, Los Angeles, CA"
+                              },
+                              "price": 249.99,
+                              "image_url": "https://example.com/images/earbuds.jpg",
+                              "description": "Noise-cancelling wireless earbuds with exceptional sound quality."
+               },
+               {
+                              "product_id": "P9",
+                              "name": "4K Smart TV",
+                              "company": "LG",
+                              "model": "OLED55C1PUB",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Electro World",
+                                             "address": "202 Display Road, Miami, FL"
+                              },
+                              "price": 1299.99,
+                              "image_url": "https://example.com/images/tv.jpg",
+                              "description": "55-inch 4K OLED smart TV with stunning picture quality."
+               },
+               {
+                              "product_id": "P10",
+                              "name": "Electric Scooter",
+                              "company": "Xiaomi",
+                              "model": "Mi Electric Scooter Pro 2",
+                              "category": "Sports & Outdoors",
+                              "seller": {
+                                             "name": "Urban Mobility",
+                                             "address": "303 Ride Lane, Portland, OR"
+                              },
+                              "price": 499.99,
+                              "image_url": "https://example.com/images/scooter.jpg",
+                              "description": "Portable and efficient electric scooter for urban commuting."
+               },
+               {
+                              "product_id": "P11",
+                              "name": "Coffee Maker",
+                              "company": "Breville",
+                              "model": "Barista Express",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Kitchen Essentials",
+                                             "address": "404 Brew Street, Seattle, WA"
+                              },
+                              "price": 599.99,
+                              "image_url": "https://example.com/images/coffee.jpg",
+                              "description": "Semi-automatic espresso machine for coffee enthusiasts."
+               },
+               {
+                              "product_id": "P12",
+                              "name": "Bluetooth Speaker",
+                              "company": "JBL",
+                              "model": "Flip 5",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Sound Gear",
+                                             "address": "505 Audio Avenue, Nashville, TN"
+                              },
+                              "price": 119.99,
+                              "image_url": "https://example.com/images/speaker.jpg",
+                              "description": "Portable Bluetooth speaker with deep bass and waterproof design."
+               },
+               {
+                              "product_id": "P13",
+                              "name": "Fitness Tracker",
+                              "company": "Fitbit",
+                              "model": "Charge 5",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Health Gadgets",
+                                             "address": "606 Fitness Lane, San Diego, CA"
+                              },
+                              "price": 179.99,
+                              "image_url": "https://example.com/images/fitness.jpg",
+                              "description": "Advanced fitness tracker with heart rate monitoring and GPS."
+               },
+               {
+                              "product_id": "P14",
+                              "name": "Electric Guitar",
+                              "company": "Fender",
+                              "model": "Stratocaster",
+                              "category": "Musical Instruments",
+                              "seller": {
+                                             "name": "Music World",
+                                             "address": "707 Melody Road, Austin, TX"
+                              },
+                              "price": 799.99,
+                              "image_url": "https://example.com/images/guitar.jpg",
+                              "description": "Iconic electric guitar with versatile sound options."
+               },
+               {
+                              "product_id": "P15",
+                              "name": "Robot Vacuum",
+                              "company": "iRobot",
+                              "model": "Roomba i7+",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Smart Home",
+                                             "address": "808 Clean Street, Boston, MA"
+                              },
+                              "price": 899.99,
+                              "image_url": "https://example.com/images/vacuum.jpg",
+                              "description": "Self-emptying robot vacuum with smart mapping technology."
+               },
+               {
+                              "product_id": "P16",
+                              "name": "Wireless Keyboard",
+                              "company": "Logitech",
+                              "model": "MX Keys",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Tech Accessories",
+                                             "address": "909 Input Lane, San Jose, CA"
+                              },
+                              "price": 99.99,
+                              "image_url": "https://example.com/images/keyboard.jpg",
+                              "description": "Premium wireless keyboard with backlit keys."
+               },
+               {
+                              "product_id": "P17",
+                              "name": "Portable Projector",
+                              "company": "Anker",
+                              "model": "Nebula Capsule",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Home Theater",
+                                             "address": "1010 Screen Road, Orlando, FL"
+                              },
+                              "price": 349.99,
+                              "image_url": "https://example.com/images/projector.jpg",
+                              "description": "Compact portable projector with built-in streaming."
+               },
+               {
+                              "product_id": "P18",
+                              "name": "Electric Skateboard",
+                              "company": "Boosted",
+                              "model": "Stealth",
+                              "category": "Sports & Outdoors",
+                              "seller": {
+                                             "name": "Urban Riders",
+                                             "address": "1111 Ride Avenue, San Francisco, CA"
+                              },
+                              "price": 1599.99,
+                              "image_url": "https://example.com/images/skateboard.jpg",
+                              "description": "High-performance electric skateboard for urban commuting."
+               },
+               {
+                              "product_id": "P19",
+                              "name": "Air Purifier",
+                              "company": "Dyson",
+                              "model": "Pure Cool TP04",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Home Comfort",
+                                             "address": "1212 Air Lane, Phoenix, AZ"
+                              },
+                              "price": 549.99,
+                              "image_url": "https://example.com/images/purifier.jpg",
+                              "description": "Smart air purifier with HEPA filtration and Wi-Fi connectivity."
+               },
+               {
+                              "product_id": "P20",
+                              "name": "Electric Pressure Cooker",
+                              "company": "Instant Pot",
+                              "model": "Duo Nova",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Kitchen Gadgets",
+                                             "address": "1313 Cook Street, Dallas, TX"
+                              },
+                              "price": 99.99,
+                              "image_url": "https://example.com/images/pressurecooker.jpg",
+                              "description": "Multi-functional electric pressure cooker for quick meals."
+               },
+               {
+                              "product_id": "P21",
+                              "name": "Action Camera",
+                              "company": "GoPro",
+                              "model": "Hero 9 Black",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Adventure Gear",
+                                             "address": "1414 Capture Lane, Boulder, CO"
+                              },
+                              "price": 399.99,
+                              "image_url": "https://example.com/images/gopro.jpg",
+                              "description": "Waterproof action camera with 5K video recording."
+               },
+               {
+                              "product_id": "P22",
+                              "name": "Electric Toothbrush",
+                              "company": "Philips",
+                              "model": "Sonicare DiamondClean",
+                              "category": "Health & Personal Care",
+                              "seller": {
+                                             "name": "Dental Care",
+                                             "address": "1515 Brush Street, Charlotte, NC"
+                              },
+                              "price": 199.99,
+                              "image_url": "https://example.com/images/toothbrush.jpg",
+                              "description": "Rechargeable electric toothbrush with multiple cleaning modes."
+               },
+               {
+                              "product_id": "P23",
+                              "name": "Gaming Chair",
+                              "company": "Razer",
+                              "model": "Iskur",
+                              "category": "Furniture",
+                              "seller": {
+                                             "name": "Gaming Gear",
+                                             "address": "1616 Game Lane, Las Vegas, NV"
+                              },
+                              "price": 499.99,
+                              "image_url": "https://example.com/images/chair.jpg",
+                              "description": "Ergonomic gaming chair with lumbar support and RGB lighting."
+               },
+               {
+                              "product_id": "P24",
+                              "name": "Wireless Charger",
+                              "company": "Belkin",
+                              "model": "Boost Up",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Tech Essentials",
+                                             "address": "1717 Charge Road, San Jose, CA"
+                              },
+                              "price": 29.99,
+                              "image_url": "https://example.com/images/charger.jpg",
+                              "description": "Fast wireless charger compatible with Qi-enabled devices."
+               },
+               {
+                              "product_id": "P25",
+                              "name": "Electric Kettle",
+                              "company": "Cuisinart",
+                              "model": "CPK-17",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Kitchenware",
+                                             "address": "1818 Brew Lane, Chicago, IL"
+                              },
+                              "price": 79.99,
+                              "image_url": "https://example.com/images/kettle.jpg",
+                              "description": "Stainless steel electric kettle with automatic shut-off."
+               },
+               {
+                              "product_id": "P26",
+                              "name": "Smart Thermostat",
+                              "company": "Nest",
+                              "model": "Learning Thermostat",
+                              "category": "Home Automation",
+                              "seller": {
+                                             "name": "Smart Home",
+                                             "address": "1919 Control Street, San Francisco, CA"
+                              },
+                              "price": 249.99,
+                              "image_url": "https://example.com/images/thermostat.jpg",
+                              "description": "Energy-saving smart thermostat with learning capabilities."
+               },
+               {
+                              "product_id": "P27",
+                              "name": "Electric Grill",
+                              "company": "George Foreman",
+                              "model": "Indoor/Outdoor Grill",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Outdoor Living",
+                                             "address": "2020 Grill Lane, Houston, TX"
+                              },
+                              "price": 129.99,
+                              "image_url": "https://example.com/images/grill.jpg",
+                              "description": "Versatile electric grill for indoor and outdoor use."
+               },
+               {
+                              "product_id": "P28",
+                              "name": "Noise-Cancelling Headphones",
+                              "company": "Bose",
+                              "model": "QuietComfort 45",
+                              "category": "Mobiles",
+                              "seller": {
+                                             "name": "Audio World",
+                                             "address": "2121 Sound Street, New York, NY"
+                              },
+                              "price": 329.99,
+                              "image_url": "https://example.com/images/headphones.jpg",
+                              "description": "Premium noise-cancelling headphones with long battery life."
+               },
+               {
+                              "product_id": "P29",
+                              "name": "Electric Blanket",
+                              "company": "Sunbeam",
+                              "model": "Heated Throw",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Home Comfort",
+                                             "address": "2222 Warm Lane, Minneapolis, MN"
+                              },
+                              "price": 59.99,
+                              "image_url": "https://example.com/images/blanket.jpg",
+                              "description": "Soft electric blanket with adjustable heat settings."
+               },
+               {
+                              "product_id": "P30",
+                              "name": "Smart Doorbell",
+                              "company": "Ring",
+                              "model": "Video Doorbell 3",
+                              "category": "Home Security",
+                              "seller": {
+                                             "name": "Home Security",
+                                             "address": "2323 Secure Road, Atlanta, GA"
+                              },
+                              "price": 199.99,
+                              "image_url": "https://example.com/images/doorbell.jpg",
+                              "description": "Wi-Fi-enabled smart doorbell with motion detection."
+               },
+               {
+                              "product_id": "P31",
+                              "name": "Electric Fireplace",
+                              "company": "Touchstone",
+                              "model": "Sideline Elite",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Home Decor",
+                                             "address": "2424 Flame Lane, Denver, CO"
+                              },
+                              "price": 699.99,
+                              "image_url": "https://example.com/images/fireplace.jpg",
+                              "description": "Realistic electric fireplace with adjustable flame settings."
+               },
+               {
+                              "product_id": "P32",
+                              "name": "Smart Lock",
+                              "company": "August",
+                              "model": "Wi-Fi Smart Lock",
+                              "category": "Home Security",
+                              "seller": {
+                                             "name": "Home Security",
+                                             "address": "2525 Lock Road, San Diego, CA"
+                              },
+                              "price": 249.99,
+                              "image_url": "https://example.com/images/lock.jpg",
+                              "description": "Keyless smart lock with remote access via smartphone."
+               },
+               {
+                              "product_id": "P33",
+                              "name": "Electric Wine Opener",
+                              "company": "Oster",
+                              "model": "Corkscrew",
+                              "category": "Home & Kitchen",
+                              "seller": {
+                                             "name": "Kitchen Gadgets",
+                                             "address": "2626 Vine Lane, Napa, CA"
+                              },
+                              "price": 39.99,
+                              "image_url": "https://example.com/images/wineopener.jpg",
+                              "description": "Automatic electric wine opener for effortless uncorking."
+               },
+               {
+                              "product_id": "P34",
+                              "name": "Smart Scale",
+                              "company": "Withings",
+                              "model": "Body+",
+                              "category": "Health & Personal Care",
+                              "seller": {
+                                             "name": "Health Gadgets",
+                                             "address": "2727 Measure Road, Miami, FL"
+                              },
+                              "price": 99.99,
+                              "image_url": "https://example.com/images/scale.jpg",
+                              "description": "Wi-Fi-enabled smart scale with body composition"
+               }
+]
