@@ -25,7 +25,7 @@ const initialState: ProductState = {
   productList: [],
   selectedProduct: null,
   wishlist: [],
-  notifications: 99, // Initial count
+  notifications: 19, // Initial count
 };
 
 const productSlice = createSlice({

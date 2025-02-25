@@ -9,6 +9,7 @@ import { RouteProp } from "@react-navigation/native";
 import ChatScreen from "../Screens/ChatScreen";
 import MakeOffer from "../Screens/MakeOffer";
 import NotificationScreen from "../Screens/NotificationScreen";
+import WishlistScreen from "../Screens/WishlistScreen";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   MakeOffer: { productId: string; productName: string; productPrice: number };
   Main: undefined;
   Notification:undefined;
+  Wishlist:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -42,6 +44,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="MakeOffer" component={MakeOffer} />
         <Stack.Screen name="Notification" component={NotificationScreen} />
+        <Stack.Screen name="Wishlist" component={WishlistScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
