@@ -180,8 +180,9 @@ export default function Car_Details({ navigation, route }) {
           </View>
           <View style={styles.viewBox}>
             <Text style={styles.viewBoxText}>Owner Name:</Text>
-            <Custom_Input value={ownerName} onChangeText={setOwnerName}          
-                 style={[styles.input, ownerName ? styles.inputValid : styles.inputInvalid]}
+            <Custom_Input value={ownerName} onChangeText={setOwnerName} 
+                     
+                //  st={[styles.input, ownerName ? styles.inputValid : styles.inputInvalid]}
               />
           </View>
           <View style={styles.viewBox}>
