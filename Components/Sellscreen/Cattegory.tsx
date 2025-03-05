@@ -7,27 +7,33 @@ import data from "../../JSON/SellCategory.json";
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-const svgComponents: Record<string, React.ElementType> = {
+// Define the SVG components mapping
+const svgComponents: { [key: string]: React.FC<{ size: number }> } = {
   Car: CarSVG,
   Bike: BikeSVG,
-  // Property: PropertySvg,
 };
 
-interface Props {
+// Define the props type
+type ProductCategorySellPageProps = {
   searchQuery: string;
-}
+  onCategorySelect: (category: { id: string; name: string; svgSize: number }) => void;
+};
 
-const ProductCategory_SellPage: React.FC<Props> = ({searchQuery}) => {
-
-  const filteredData = data.filter((item) =>
+const ProductCategory_SellPage: React.FC<ProductCategorySellPageProps> = ({ searchQuery, onCategorySelect }) => {
+  const filteredData = data.filter((item: any) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      {filteredData.map((item) => {
-        const SvgComponent = svgComponents[item.name];
+      {filteredData.map((item: any) => {
+        const SvgComponent = svgComponents[item.name] || null;
         return (
-          <TouchableOpacity key={item.id} style={styles.cardContainer}>
+          <TouchableOpacity
+            key={item.id}
+            style={styles.cardContainer}
+            onPress={() => onCategorySelect(item)} // Pass selected category to SellScreen
+          >
             {SvgComponent ? (
               <SvgComponent size={item.svgSize} />
             ) : (
@@ -48,14 +54,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    paddingBottom: 50, // Prevents last row from being cut off
+    paddingBottom: 50,
   },
   cardContainer: {
     padding: 10,
     margin: 10,
     borderWidth: 1,
     borderColor: "red",
-    width: SCREEN_WIDTH * 0.44, // 2 items per row
+    width: SCREEN_WIDTH * 0.44,
     height: SCREEN_HEIGHT * 0.22,
     justifyContent: "center",
     alignItems: "center",

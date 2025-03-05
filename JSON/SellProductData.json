@@ -1,0 +1,19 @@
+{
+    "vehicles": [
+      {
+        "type": "",
+        "brand": "",
+        "model": "",
+        "year": "",
+        "price": "",
+        "fuelType": "",
+        "mileage": "",
+        "features": [],
+        "location": "",
+        "seller": {
+          "name": "",
+          "contact": ""
+        }
+      }
+    ]
+  }

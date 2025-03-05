@@ -1,10 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function ChatScreen() {
+const BikeDetails = () => {
   return (
     <View>
-      <Text>ChatScreen</Text>
+      <Text>BikeDetails</Text>
     </View>
   )
 }
+
+export default BikeDetails

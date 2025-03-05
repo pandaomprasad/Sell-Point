@@ -1,0 +1,19 @@
+{
+    "vehicles": [
+      {
+        "type": "What type of vehicle is it? (car/bike)",
+        "brand": "What is the brand of the vehicle?",
+        "model": "What is the model of the vehicle?",
+        "year": "What year was the vehicle manufactured?",
+        "price": "What is the price of the vehicle?",
+        "fuelType": "What type of fuel does the vehicle use?",
+        "mileage": "What is the vehicle's mileage?",
+        "features": ["List the features of the vehicle (comma-separated)"] ,
+        "location": "Where is the vehicle located?",
+        "seller": {
+          "name": "What is the seller's name?",
+          "contact": "What is the seller's contact information?"
+        }
+      }
+    ]
+}

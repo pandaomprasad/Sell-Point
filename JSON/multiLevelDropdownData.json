@@ -1,0 +1,86 @@
+{
+  "Car": [
+    {
+      "id": "100",
+      "label": "Audi",
+      "models": [
+        {
+          "id": "100-1",
+          "label": "R1"
+        },
+        {
+          "id": "100-2",
+          "label": "A3"
+        },
+        {
+          "id": "100-3",
+          "label": "RS2"
+        }
+      ]
+    },
+    {
+      "id": "101",
+      "label": "BMW",
+      "models": [
+        {
+          "id": "101-1",
+          "label": "M1"
+        },
+        {
+          "id": "101-2",
+          "label": "M2"
+        },
+        {
+          "id": "101-3",
+          "label": "M3"
+        }
+      ]
+    }
+  ],
+  "Bike": [
+    {
+      "id": "500",
+      "label": "Yamaha",
+      "models": [
+        {
+          "id": "500-1",
+          "label": "FZs"
+        },
+        {
+          "id": "500-2",
+          "label": "R15"
+        }
+      ]
+    }
+  ],
+  "Job":[
+    {
+      "id":"1000",
+      "label":"Salary Period",
+      "Requirements":[
+        {
+          "id":"1000-1",
+          "label":"3 Years of Experience"
+        },
+        {
+          "id":"1000-2",
+          "label":"Redux"
+        }
+      ]
+    },
+    {
+      "id":"1001",
+      "label":"Position Type",
+      "Requirements":[
+        {
+          "id":"1000-1",
+          "label":"3 Years of Experience"
+        },
+        {
+          "id":"1000-2",
+          "label":"Redux"
+        }
+      ]
+    }
+  ]
+}
