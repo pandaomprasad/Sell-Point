@@ -1,179 +1,397 @@
-import React, { useState, useRef, useCallback } from "react";
 import {
   View,
   Text,
+  KeyboardAvoidingView,
   SafeAreaView,
+  Button,
+  ScrollView,
+  Image,
+  Alert,
+  Platform,
+  Modal,
+  FlatList,
+  TouchableOpacity,
+  TextInput,
   StyleSheet,
   Dimensions,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
 } from "react-native";
+import React, { useState } from "react";
 import Custom_Input from "../Components/Input/Custom_Input";
 import OptionSelector from "../Components/Input/Radio_Button";
-import Submit from "../Components/Button/Submit";
-import Brand_ModalPage from "../Components/Button/Brand_ModalPage";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import BottomSheetModal from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheetModal";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import {
+  launchImageLibrary,
+  requestMediaLibraryPermissionsAsync,
+} from "react-native-image-picker";
+
+import carData from "../JSON/CarBrandAndModel.json";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-// Define types for each selection
-type FuelValue = "petrol" | "diesel" | "electric" | "hybrid";
-type TransmissionValue = "manual" | "automatic";
-type OwnersValue = "1" | "2" | "3" | "4+";
+export default function Car_Details({ navigation, route }) {
+  const [ownerName, setOwnerName] = useState("");
+  const [description, setDescription] = useState("");
+  const [sellingPrice, setSellingPrice] = useState("");
+  const [fuelType, setFuelType] = useState<string | null>(null);
+  const [ownerNum, setownerNum] = useState<string | null>(null);
+  const [transmissionType, setTransmissionType] = useState<string | null>(null);
+  const [carImage, setCarImage] = useState<string | null>(null);
 
-const Car_Details = () => {
-  const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
-  const [kmDriven, setKmDriven] = useState("");
-  const [adTitle, setAdTitle] = useState("");
-  const [additionalInfo, setAdditionalInfo] = useState("");
-  const [fuelType, setFuelType] = useState<FuelValue | null>(null);
-  const [transmission, setTransmission] = useState<TransmissionValue | null>(
-    null
-  );
-  const [owners, setOwners] = useState<OwnersValue | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modelSelectionVisible, setModelSelectionVisible] = useState(false);
+  const [subModelSelectionVisible, setSubModelSelectionVisible] =
+    useState(false);
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const [brandSearchQuery, setBrandSearchQuery] = useState("");
+  const [modelSearchQuery, setModelSearchQuery] = useState("");
+  const [subModelSearchQuery, setSubModelSearchQuery] = useState("");
 
-  const isFormValid = () => {
-    return (
-      brand &&
-      model &&
-      kmDriven &&
-      adTitle &&
-      additionalInfo &&
-      fuelType &&
-      transmission &&
-      owners
-    );
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedSubModel, setSelectedSubModel] = useState(null);
+  
+
+  const fuelOptions = [
+    { id: "1", label: "Petrol", value: "petrol" },
+    { id: "2", label: "Diesel", value: "diesel" },
+    { id: "3", label: "Electric", value: "electric" },
+    { id: "4", label: "Hybrid", value: "hybrid" },
+  ];
+
+  const transmissionOptions = [
+    { id: "1", label: "Manual", value: "manual" },
+    { id: "2", label: "Automatic", value: "automatic" },
+  ];
+  const ownerOptions = [
+    { id: "1", label: "Manual", value: "manual" },
+    { id: "2", label: "Automatic", value: "automatic" },
+  ];
+
+  const handleImagePick = async () => {
+    if (Platform.OS === "android") {
+      const { granted } = await requestMediaLibraryPermissionsAsync();
+      if (!granted) {
+        Alert.alert(
+          "Permission required",
+          "Please grant media access to select an image."
+        );
+        return;
+      }
+    }
+    launchImageLibrary({ mediaType: "photo" }, (response) => {
+      if (response.assets && response.assets.length > 0) {
+        setCarImage(response.assets[0].uri);
+      }
+    });
+  };
+  const isFormValid = ownerName && description && sellingPrice && fuelType && ownerNum && transmissionType && selectedBrand && selectedModel && selectedSubModel;
+
+  const handleSubmit = () => {
+    if (isFormValid) {
+      const carDetails = {
+        ownerName,
+        description,
+        fuelType,
+        ownerNum,
+        transmissionType,
+        sellingPrice,
+        carImage,
+        selectedBrand,
+        selectedModel,
+        selectedSubModel,
+      };
+      console.log("Car Details:", carDetails);
+    } else {
+      Alert.alert("Form Incomplete", "Please fill out all required fields.");
+    }
   };
 
+  const filteredBrands = carData.filter((item) =>
+    item.label.toLowerCase().includes(brandSearchQuery.toLowerCase())
+  );
+  const filteredModels = selectedBrand?.models.filter((item) =>
+    item.label.toLowerCase().includes(modelSearchQuery.toLowerCase())
+  );
+  const filteredSubModels = selectedModel?.subModel.filter((item) =>
+    item.toLowerCase().includes(subModelSearchQuery.toLowerCase())
+  );
 
   return (
-    <GestureHandlerRootView style={{flex:1}}>
-        <SafeAreaView style={styles.container}>
-          <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.keyboardAvoidingView}
-          >
-            <ScrollView contentContainerStyle={styles.scrollView}>
-              <View style={styles.Box_Container}>
-                <Text>Select Brand</Text>
-                <Brand_ModalPage  vehicleType="Car"  />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>Select Model</Text>
-                <Brand_ModalPage vehicleType="Bike" />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>Fuel Type*</Text>
-                <OptionSelector
-                  options={[
-                    { id: "1", label: "Petrol", value: "petrol" },
-                    { id: "2", label: "Diesel", value: "diesel" },
-                    { id: "3", label: "Electric", value: "electric" },
-                    { id: "4", label: "Hybrid", value: "hybrid" },
-                  ]}
-                  onSelect={(value) => setFuelType(value as FuelValue)}
-                  selectedValue={fuelType}
+    <KeyboardAvoidingView behavior="padding">
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.viewBox}>
+            <View>
+              <Text style={styles.viewBoxText}>There is no image</Text>
+
+              {carImage && (
+                <Image
+                  source={{ uri: carImage }}
+                  style={{ width: 200, height: 200, marginVertical: 10 }}
                 />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>Transmission*</Text>
-                <OptionSelector
-                  options={[
-                    {
-                      id: "1",
-                      label: "Manual",
-                      value: "manual" as TransmissionValue,
-                    }, // Correctly cast to TransmissionValue
-                    {
-                      id: "2",
-                      label: "Automatic",
-                      value: "automatic" as TransmissionValue,
-                    }, // Correctly cast to TransmissionValue
-                  ]}
-                  onSelect={(value) =>
-                    setTransmission(value as TransmissionValue)
-                  } // Ensure value is cast to TransmissionValue
-                  selectedValue={transmission}
-                />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>KM Driven</Text>
-                <Custom_Input
-                  multiline={false}
-                  maxLength={6}
-                  keyboardType="numeric"
-                  value={kmDriven}
-                  onChangeText={setKmDriven}
-                />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>No Of Owners*</Text>
-                <OptionSelector
-                  options={[
-                    { id: "1", label: "1 Owner", value: "1" as OwnersValue },
-                    { id: "2", label: "2 Owners", value: "2" as OwnersValue },
-                    { id: "3", label: "3 Owners", value: "3" as OwnersValue },
-                    { id: "4", label: "4+ Owners", value: "4+" as OwnersValue },
-                  ]}
-                  onSelect={(value) => setOwners(value as OwnersValue)}
-                  selectedValue={owners}
-                />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>Ad Title</Text>
-                <Custom_Input
-                  multiline={false}
-                  maxLength={20}
-                  value={adTitle}
-                  onChangeText={setAdTitle}
-                />
-              </View>
-              <View style={styles.Box_Container}>
-                <Text>Additional Information</Text>
-                <Custom_Input
-                  multiline={true}
-                  maxLength={50}
-                  value={additionalInfo}
-                  onChangeText={setAdditionalInfo}
-                />
-              </View>
-            </ScrollView>
-            <Submit
-              style={{ backgroundColor: isFormValid() ? "red" : "gray" }}
+              )}
+
+              {/* "TODO : ADD WHEN THER IS NO PHOTO SELECTED SHOW THE ABOVE TEXT"
+            "TODO: FIX TEH VIEW"
+             */}
+            </View>
+            <Button title="Choose Car Photo" onPress={handleImagePick} />
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Brand*</Text>
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              style={{
+                backgroundColor: "red",
+                height: SCREEN_HEIGHT * 0.05,
+                borderRadius: 5,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.viewBoxText}>
+                {selectedBrand && selectedModel && selectedSubModel
+                  ? ` ${selectedBrand.label} - ${selectedModel.label} - ${selectedSubModel}`
+                  : "Choose Car Model"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Fuel Type:</Text>
+            <OptionSelector
+              options={fuelOptions}
+              selectedValue={fuelType}
+              onSelect={setFuelType}
             />
-          </KeyboardAvoidingView>
-        </SafeAreaView>
-    </GestureHandlerRootView>
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Transmission Type:</Text>
+            <OptionSelector
+              options={transmissionOptions}
+              selectedValue={transmissionType}
+              onSelect={setTransmissionType}
+            />
+            <Text style={styles.viewBoxText}>Owner Numbers:</Text>
+            <OptionSelector
+              selectedValue={ownerNum}
+              options={ownerOptions}
+              onSelect={setownerNum}
+            />
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Owner Name:</Text>
+            <Custom_Input value={ownerName} onChangeText={setOwnerName}          
+                 style={[styles.input, ownerName ? styles.inputValid : styles.inputInvalid]}
+              />
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Description</Text>
+            <Custom_Input
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+          </View>
+          <View style={styles.viewBox}>
+            <Text style={styles.viewBoxText}>Selling Price</Text>
+            <Custom_Input
+              value={sellingPrice}
+              onChangeText={setSellingPrice}
+              keyboardType="numeric"
+            />
+          </View>
+
+          {/* Brand Selection Modal */}
+          <Modal visible={modalVisible} animationType="slide">
+            <SafeAreaView>
+              <TextInput
+                placeholder="Search brand..."
+                onChangeText={setBrandSearchQuery}
+                value={brandSearchQuery}
+                style={{
+                  padding: 10,
+                  borderWidth: 1,
+                  margin: SCREEN_HEIGHT * 0.02,
+                  borderRadius: 5,
+                }}
+                placeholderTextColor="black"
+              />
+              <FlatList
+                data={filteredBrands}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => {
+                      setSelectedBrand(item);
+                      setModalVisible(false);
+                      setModelSelectionVisible(true);
+                      setBrandSearchQuery("");
+                    }}
+                    style={{
+                      borderBottomWidth: 1,
+                      height: SCREEN_HEIGHT * 0.06,
+                      justifyContent: "center",
+                      padding: SCREEN_WIDTH * 0.02,
+                      borderRadius: 5,
+                      width: SCREEN_WIDTH * 0.92,
+                      alignSelf: "center",
+                    }}
+                  >
+                    <Text style={{ fontSize: SCREEN_HEIGHT * 0.02 }}>
+                      {item.label}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
+              <Button title="Close" onPress={() => setModalVisible(false)} />
+            </SafeAreaView>
+          </Modal>
+
+          {/* Model Selection Modal */}
+          <Modal visible={modelSelectionVisible} animationType="slide">
+            <SafeAreaView>
+              <TextInput
+                placeholder="Search model..."
+                onChangeText={setModelSearchQuery}
+                value={modelSearchQuery}
+                style={{
+                  padding: 10,
+                  borderWidth: 1,
+                  margin: SCREEN_HEIGHT * 0.02,
+                  borderRadius: 5,
+                }}
+                placeholderTextColor="black"
+              />
+              <FlatList
+                data={filteredModels}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => {
+                      setSelectedModel(item);
+                      setModelSelectionVisible(false);
+                      setSubModelSelectionVisible(true);
+                      setModelSearchQuery("");
+                    }}
+                    style={{
+                      borderBottomWidth: 1,
+                      height: SCREEN_HEIGHT * 0.06,
+                      justifyContent: "center",
+                      padding: SCREEN_WIDTH * 0.02,
+                      borderRadius: 5,
+                      width: SCREEN_WIDTH * 0.92,
+                      alignSelf: "center",
+                    }}
+                  >
+                    <Text style={{ fontSize: SCREEN_HEIGHT * 0.02 }}>
+                      {item.label}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
+              <Button
+                title="Close"
+                onPress={() => setModelSelectionVisible(false)}
+              />
+            </SafeAreaView>
+          </Modal>
+          <Modal visible={subModelSelectionVisible} animationType="slide">
+            <SafeAreaView>
+              <TextInput
+                placeholder="Search sub-model..."
+                onChangeText={setSubModelSearchQuery}
+                value={subModelSearchQuery}
+                style={{
+                  padding: 10,
+                  borderWidth: 1,
+                  margin: SCREEN_HEIGHT * 0.02,
+                  borderRadius: 5,
+                }}
+              />
+              <FlatList
+                data={filteredSubModels}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => {
+                      setSelectedSubModel(item);
+                      setSubModelSelectionVisible(false);
+                      setSubModelSearchQuery("");
+                    }}
+                    style={{
+                      borderBottomWidth: 1,
+                      height: SCREEN_HEIGHT * 0.06,
+                      justifyContent: "center",
+                      padding: SCREEN_WIDTH * 0.02,
+                      borderRadius: 5,
+                      width: SCREEN_WIDTH * 0.92,
+                      alignSelf: "center",
+                    }}
+                  >
+                    <Text style={{ fontSize: SCREEN_HEIGHT * 0.02 }}>
+                      {item}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
+              <Button
+                title="Close"
+                onPress={() => setSubModelSelectionVisible(false)}
+              />
+            </SafeAreaView>
+          </Modal>
+        <TouchableOpacity
+          onPress={handleSubmit}
+          style={[styles.submitButton, isFormValid ? styles.buttonEnabled : styles.buttonDisabled]}
+          disabled={!isFormValid}
+        >
+          <Text style={{ fontSize: SCREEN_HEIGHT * 0.025, fontWeight: "700" }}>
+            SUBMIT
+          </Text>
+        </TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  viewBox: {
+    paddingHorizontal: SCREEN_HEIGHT * 0.008,
+  }, 
+  viewBoxText: {
+    fontSize: SCREEN_HEIGHT * 0.02,
+    fontWeight: "600",
   },
-  keyboardAvoidingView: {
-    flex: 1,
+  input: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
   },
-  scrollView: {
-    flexGrow: 1,
+  inputValid: {
+    borderColor: "green",
+  },
+  inputInvalid: {
+    borderColor: "red",
+  },
+  submitButton: {
+    height: SCREEN_HEIGHT * 0.07,
+    width: SCREEN_WIDTH * 0.9,
     justifyContent: "center",
-    paddingBottom: 20,
-    paddingTop: Platform.OS === "ios" ? 10 : 0,
-  },
-  Box_Container: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    width: SCREEN_WIDTH * 0.95,
+    alignItems: "center",
     alignSelf: "center",
-    marginBottom: 15,
+    borderRadius: 5,
+  },
+  buttonEnabled: {
+    backgroundColor: "green",
+  },
+  buttonDisabled: {
+    backgroundColor: "gray",
+  },
+  submitButtonText: {
+    fontSize: SCREEN_HEIGHT * 0.025,
+    fontWeight: "700",
+    color: "white",
   },
 });
-
-export default Car_Details;

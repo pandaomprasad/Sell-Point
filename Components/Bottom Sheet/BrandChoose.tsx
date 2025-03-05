@@ -1,73 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
-import vehiclesData from '../../JSON/multiLevelDropdownData.json';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import carData from "../../JSON/CarBrandAndModel.json";
 
-interface Model {
+// Define types for Brand
+interface Brand {
   id: string;
   label: string;
+  models: any[]; // You can define a more specific type for models if needed
 }
 
-interface Car {
-  id: string;
-  label: string;
-  models: Model[];
+// Define props for the BrandChoose component
+interface BrandChooseProps {
+  navigation: {
+    navigate: (screen: string, params: { brand: Brand }) => void;
+  };
 }
 
-interface Bike {
-  id: string;
-  label: string;
-  models: Model[];
-}
+const BrandChoose: React.FC<BrandChooseProps> = ({ navigation }) => {
+  const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
-interface VehiclesData {
-  Car: Car[];
-  Bike: Bike[];
-  Job: any[];
-}
-
-type BrandChooseRouteProp = RouteProp<{ BrandChoose: { vehicleType: 'Car' | 'Bike' } }, 'BrandChoose'>;
-
-const BrandChoose: React.FC = () => {
-  const route = useRoute<BrandChooseRouteProp>();
-  const navigation = useNavigation();
-  const { vehicleType } = route.params;
-
-  const [data, setData] = useState<VehiclesData | null>(null);
-
-  useEffect(() => {
-    setData(vehiclesData);
-    console.log("Loaded vehicle data:", vehiclesData);
-  }, []);
-
-  if (!data) {
-    return <Text>Loading...</Text>;
-  }
-
-  const renderVehicleDetails = () => {
-    const vehicles = data[vehicleType];
-
-    if (!vehicles || vehicles.length === 0) {
-      return <Text>No {vehicleType} data available.</Text>;
-    }
-
-    return vehicles.map((item) => (
-      <View key={item.id} style={styles.itemContainer}>
-        <TouchableOpacity
-          style={styles.label}
-          onPress={() => navigation.navigate('BrandDetails', { brand: item })}
-        >
-          <Text style={styles.labelText}>{item.label}</Text>
-        </TouchableOpacity>
-      </View>
-    ));
+  const handleBrandPress = (brand: Brand) => {
+    setSelectedBrand(brand);
+    navigation.navigate('BrandDetails', { brand });
   };
 
+  // Filter brands based on search input
+  const filteredBrands = carData.filter(brand =>
+    brand.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>{vehicleType} Brands</Text>
-      {renderVehicleDetails()}
-    </ScrollView>
+    <View style={styles.container}>
+      <Text style={styles.title}>Choose a Car Brand</Text>
+      
+      {/* Search Input for Brands */}
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search Brands"
+        value={searchQuery}
+        onChangeText={setSearchQuery}
+      />
+      
+      {filteredBrands.map((brand) => (
+        <Button
+          key={brand.id}
+          title={brand.label}
+          onPress={() => handleBrandPress(brand)}
+        />
+      ))}
+    </View>
   );
 };
 
@@ -75,24 +57,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontSize: 20,
+    marginVertical: 10,
   },
-  itemContainer: {
-    marginBottom: 15,
-  },
-  label: {
-    padding: 10,
-    backgroundColor: '#007bff',
+  searchInput: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
     borderRadius: 5,
-  },
-  labelText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#fff',
+    paddingHorizontal: 10,
+    marginBottom: 10,
   },
 });
 
