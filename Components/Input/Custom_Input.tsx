@@ -22,10 +22,11 @@ interface CustomInputProps {
 const Custom_Input: React.FC<CustomInputProps> = ({ multiline, maxLength, keyboardType = 'default', value, onChangeText }) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  // Determine border color based on focus and value
+  // Determine border color based on focus, value, and length
   const getBorderColor = () => {
+    if (maxLength && value.length >= maxLength) return '#dc3545'; // Red if at max length
     if (isFocused) return '#007bff'; // Blue when focused
-    if (value) return '#007bff'; // Green if value is present
+    if (value) return '#28a745'; // Green if value is present
     return '#ccc'; // Default gray
   };
 
@@ -47,8 +48,8 @@ const Custom_Input: React.FC<CustomInputProps> = ({ multiline, maxLength, keyboa
         onBlur={() => setIsFocused(false)} // Handle blur
       />
       {maxLength && (
-        <Text style={styles.charCount}>
-          {value.length}/{maxLength} characters
+        <Text style={[styles.charCount, { color: value.length >= maxLength ? '#dc3545' : 'gray' }]}>
+          {value.length}/{maxLength}
         </Text>
       )}
     </View>
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
   charCount: {
     alignSelf: 'flex-end',
     marginTop: 5,
-    color: 'gray',
+    fontSize: 14,
   },
 });
 

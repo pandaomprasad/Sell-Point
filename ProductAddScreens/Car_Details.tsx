@@ -23,12 +23,13 @@ import {
   requestMediaLibraryPermissionsAsync,
 } from "react-native-image-picker";
 
-import carData from "../JSON/CarBrandAndModel.json";
+const carData: CarBrand[] = require("../JSON/CarBrandAndModel.json");
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-export default function Car_Details({ navigation, route }) {
+export default function Car_Details({  }) {
   const [ownerName, setOwnerName] = useState("");
   const [description, setDescription] = useState("");
   const [sellingPrice, setSellingPrice] = useState("");
@@ -49,7 +50,6 @@ export default function Car_Details({ navigation, route }) {
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedSubModel, setSelectedSubModel] = useState(null);
-  
 
   const fuelOptions = [
     { id: "1", label: "Petrol", value: "petrol" },
@@ -66,7 +66,24 @@ export default function Car_Details({ navigation, route }) {
     { id: "1", label: "Manual", value: "manual" },
     { id: "2", label: "Automatic", value: "automatic" },
   ];
-
+  interface CarSubModel {
+    id: string;
+    label: string;
+    subModel: string[];
+  }
+  
+  interface CarModel {
+    id: string;
+    label: string;
+    models: CarSubModel[];
+  }
+  
+  interface CarBrand {
+    id: string;
+    label: string;
+    models: CarModel[];
+  }
+  
   const handleImagePick = async () => {
     if (Platform.OS === "android") {
       const { granted } = await requestMediaLibraryPermissionsAsync();
@@ -84,7 +101,16 @@ export default function Car_Details({ navigation, route }) {
       }
     });
   };
-  const isFormValid = ownerName && description && sellingPrice && fuelType && ownerNum && transmissionType && selectedBrand && selectedModel && selectedSubModel;
+  const isFormValid =
+    ownerName &&
+    description &&
+    sellingPrice &&
+    fuelType &&
+    ownerNum &&
+    transmissionType &&
+    selectedBrand &&
+    selectedModel &&
+    selectedSubModel;
 
   const handleSubmit = () => {
     if (isFormValid) {
@@ -107,34 +133,34 @@ export default function Car_Details({ navigation, route }) {
   };
 
   const filteredBrands = carData.filter((item) =>
-    item.label.toLowerCase().includes(brandSearchQuery.toLowerCase())
-  );
-  const filteredModels = selectedBrand?.models.filter((item) =>
-    item.label.toLowerCase().includes(modelSearchQuery.toLowerCase())
-  );
-  const filteredSubModels = selectedModel?.subModel.filter((item) =>
-    item.toLowerCase().includes(subModelSearchQuery.toLowerCase())
-  );
+  item.label.toLowerCase().includes(brandSearchQuery.toLowerCase())
+);
+
+const filteredModels = selectedBrand?.models.filter((item: { label: string; }) =>
+  item.label.toLowerCase().includes(modelSearchQuery.toLowerCase())
+);
+
+const filteredSubModels = selectedModel?.subModel.filter((item: string) =>
+  item.toLowerCase().includes(subModelSearchQuery.toLowerCase())
+);
+
 
   return (
     <KeyboardAvoidingView behavior="padding">
       <SafeAreaView>
         <ScrollView>
           <View style={styles.viewBox}>
-            <View>
-              <Text style={styles.viewBoxText}>There is no image</Text>
-
-              {carImage && (
+            <View style={styles.imageContainer}>
+              {!carImage ? (
+                <Text style={styles.viewBoxText}>There is no image</Text>
+              ) : (
                 <Image
                   source={{ uri: carImage }}
                   style={{ width: 200, height: 200, marginVertical: 10 }}
                 />
               )}
-
-              {/* "TODO : ADD WHEN THER IS NO PHOTO SELECTED SHOW THE ABOVE TEXT"
-            "TODO: FIX TEH VIEW"
-             */}
             </View>
+
             <Button title="Choose Car Photo" onPress={handleImagePick} />
           </View>
           <View style={styles.viewBox}>
@@ -180,9 +206,11 @@ export default function Car_Details({ navigation, route }) {
           </View>
           <View style={styles.viewBox}>
             <Text style={styles.viewBoxText}>Owner Name:</Text>
-            <Custom_Input value={ownerName} onChangeText={setOwnerName} 
-                     
-              />
+            <Custom_Input
+              value={ownerName}
+              onChangeText={setOwnerName}
+              maxLength={30}
+            />
           </View>
           <View style={styles.viewBox}>
             <Text style={styles.viewBoxText}>Description</Text>
@@ -190,6 +218,7 @@ export default function Car_Details({ navigation, route }) {
               value={description}
               onChangeText={setDescription}
               multiline
+              maxLength={200}
             />
           </View>
           <View style={styles.viewBox}>
@@ -198,12 +227,19 @@ export default function Car_Details({ navigation, route }) {
               value={sellingPrice}
               onChangeText={setSellingPrice}
               keyboardType="numeric"
+              maxLength={6}
             />
           </View>
 
           {/* Brand Selection Modal */}
           <Modal visible={modalVisible} animationType="slide">
-            <SafeAreaView>
+            <SafeAreaView style={styles.modalContainer}>
+              <Text style={{
+                fontSize:SCREEN_WIDTH*0.04,
+                alignSelf: 'center',
+                fontWeight:'700',
+                color:'#FF6347'
+              }}>Please select your car brand</Text>
               <TextInput
                 placeholder="Search brand..."
                 onChangeText={setBrandSearchQuery}
@@ -243,13 +279,24 @@ export default function Car_Details({ navigation, route }) {
                   </TouchableOpacity>
                 )}
               />
-              <Button title="Close" onPress={() => setModalVisible(false)} />
+<TouchableOpacity
+  onPress={() => setModalVisible(false)}
+  style={styles.closeButton}
+>
+  <Text style={styles.closeButtonText}>Next</Text>
+</TouchableOpacity>
             </SafeAreaView>
           </Modal>
 
           {/* Model Selection Modal */}
           <Modal visible={modelSelectionVisible} animationType="slide">
-            <SafeAreaView>
+            <SafeAreaView style={styles.modalContainer}>
+            <Text style={{
+                fontSize:SCREEN_WIDTH*0.04,
+                alignSelf: 'center',
+                fontWeight:'700',
+                color:'#FF6347'
+              }}>Please select your car Model</Text>
               <TextInput
                 placeholder="Search model..."
                 onChangeText={setModelSearchQuery}
@@ -289,15 +336,23 @@ export default function Car_Details({ navigation, route }) {
                   </TouchableOpacity>
                 )}
               />
-              <Button
-                title="Close"
-                onPress={() => setModelSelectionVisible(false)}
-              />
+              <TouchableOpacity
+  onPress={() => setModalVisible(false)}
+  style={styles.closeButton}
+>
+  <Text style={styles.closeButtonText}>Next</Text>
+</TouchableOpacity>
             </SafeAreaView>
           </Modal>
           <Modal visible={subModelSelectionVisible} animationType="slide">
-            <SafeAreaView>
-              <TextInput
+          <SafeAreaView style={styles.modalContainer}>
+            <Text style={{
+                fontSize:SCREEN_WIDTH*0.04,
+                alignSelf: 'center',
+                fontWeight:'700',
+                color:'#FF6347'
+              }}>Please select your car Model</Text>
+                            <TextInput
                 placeholder="Search sub-model..."
                 onChangeText={setSubModelSearchQuery}
                 value={subModelSearchQuery}
@@ -334,21 +389,28 @@ export default function Car_Details({ navigation, route }) {
                   </TouchableOpacity>
                 )}
               />
-              <Button
-                title="Close"
-                onPress={() => setSubModelSelectionVisible(false)}
-              />
+                       <TouchableOpacity
+  onPress={() => setModalVisible(false)}
+  style={styles.closeButton}
+>
+  <Text style={styles.closeButtonText}>Next</Text>
+</TouchableOpacity>
             </SafeAreaView>
           </Modal>
-        <TouchableOpacity
-          onPress={handleSubmit}
-          style={[styles.submitButton, isFormValid ? styles.buttonEnabled : styles.buttonDisabled]}
-          disabled={!isFormValid}
-        >
-          <Text style={{ fontSize: SCREEN_HEIGHT * 0.025, fontWeight: "700" }}>
-            SUBMIT
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleSubmit}
+            style={[
+              styles.submitButton,
+              isFormValid ? styles.buttonEnabled : styles.buttonDisabled,
+            ]}
+            disabled={!isFormValid}
+          >
+            <Text
+              style={{ fontSize: SCREEN_HEIGHT * 0.025, fontWeight: "700" }}
+            >
+              SUBMIT
+            </Text>
+          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </KeyboardAvoidingView>
@@ -358,7 +420,7 @@ export default function Car_Details({ navigation, route }) {
 const styles = StyleSheet.create({
   viewBox: {
     paddingHorizontal: SCREEN_HEIGHT * 0.008,
-  }, 
+  },
   viewBoxText: {
     fontSize: SCREEN_HEIGHT * 0.02,
     fontWeight: "600",
@@ -394,4 +456,36 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "white",
   },
+  imageContainer:{
+    backgroundColor: 'red',
+    height:SCREEN_HEIGHT*0.35,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "space-between", 
+    // padding: 20,
+  },
+  
+  closeButton: {
+    backgroundColor: "#FF6347",
+    padding: 15,
+    borderRadius: 5,
+    alignItems: "center",
+    marginBottom: 20,
+    width:SCREEN_WIDTH*0.95,
+    alignSelf:'center',
+    flexDirection:'row',
+    justifyContent:'center',
+    gap:5
+  },
+  
+  closeButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  
+  
 });
