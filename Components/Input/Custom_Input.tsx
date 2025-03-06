@@ -4,10 +4,9 @@ import React, { useState } from 'react';
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-// Define the props interface
 interface CustomInputProps {
-  multiline?: boolean; // Optional prop
-  maxLength?: number; // Optional prop for maximum length
+  multiline?: boolean;
+  maxLength?: number;
   keyboardType?: 
     | 'default' 
     | 'email-address' 
@@ -15,22 +14,37 @@ interface CustomInputProps {
     | 'phone-pad' 
     | 'decimal-pad' 
     | 'ascii-capable' 
-    | 'visible-password'; // Optional prop for keyboard type
-  value: string; // Required prop for input value
-  onChangeText: (text: string) => void; // Required prop for handling text change
+    | 'visible-password';
+  value: string;
+  onChangeText: (text: string) => void;
 }
 
 const Custom_Input: React.FC<CustomInputProps> = ({ multiline, maxLength, keyboardType = 'default', value, onChangeText }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  // Determine border color based on focus and value
+  const getBorderColor = () => {
+    if (isFocused) return '#007bff'; // Blue when focused
+    if (value) return '#007bff'; // Green if value is present
+    return '#ccc'; // Default gray
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
-        style={[styles.input, multiline && styles.multilineContainer]} // Apply dynamic styles
+        style={[
+          styles.input, 
+          multiline && styles.multilineContainer,
+          { borderColor: getBorderColor() } // Dynamic border color
+        ]}
         multiline={multiline}
-        numberOfLines={multiline ? 4 : 1} // Set number of lines for multiline
-        maxLength={maxLength} // Set the maximum length
-        value={value} // Bind the input value to the state
-        onChangeText={onChangeText} // Handle text change
-        keyboardType={keyboardType} // Set the keyboard type dynamically
+        numberOfLines={multiline ? 4 : 1}
+        maxLength={maxLength}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        onFocus={() => setIsFocused(true)} // Handle focus
+        onBlur={() => setIsFocused(false)} // Handle blur
       />
       {maxLength && (
         <Text style={styles.charCount}>
@@ -51,15 +65,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     padding: 3,
-    height:SCREEN_HEIGHT*0.05
+    height: SCREEN_HEIGHT * 0.05,
   },
   multilineContainer: {
-    height: SCREEN_HEIGHT * 0.1, // Set a larger height for multiline
+    height: SCREEN_HEIGHT * 0.1,
   },
   charCount: {
-    alignSelf: 'flex-end', // Align character count to the right
-    marginTop: 5, // Space between input and character count
-    color: 'gray', // Color for the character count
+    alignSelf: 'flex-end',
+    marginTop: 5,
+    color: 'gray',
   },
 });
 
