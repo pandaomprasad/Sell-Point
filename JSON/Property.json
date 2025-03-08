@@ -6,18 +6,127 @@
             {
                 "id": "101",
                 "label": "Villa",
-                "bhk": ["3 BHK", "4 BHK"],
-                "bathrooms": ["3", "4"],
-                "furnishing": ["Furnished", "Semi-Furnished","Unfurnished"],
-                "carParking": ["0", "1","3"]
+                "bhk": [
+                    "3 BHK",
+                    "4 BHK"
+                ],
+                "bathrooms": [
+                    "3",
+                    "4"
+                ],
+                "furnishing": [
+                    "Furnished",
+                    "Semi-Furnished",
+                    "Unfurnished"
+                ],
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedBy": [
+                    "Builder",
+                    "Dealer",
+                    "Owner"
+                ],
+                "bachlores": [
+                    "Allowed",
+                    "Not Allowed"
+                ],
+                "facing": [
+                    "North",
+                    "East",
+                    "South",
+                    "West",
+                    "Northeast",
+                    "Southeast",
+                    "Southwest",
+                    "Northwest"
+                ]
             },
             {
                 "id": "102",
                 "label": "Apartment",
-                "bhk": ["1 BHK", "2 BHK", "3 BHK"],
-                "bathrooms": ["1", "2"],
-                "furnishing": ["Furnished","Semi-Furnished", "Unfurnished"],
-                "carParking": ["0", "1","3"]
+                "bhk": [
+                    "1 BHK",
+                    "2 BHK",
+                    "3 BHK"
+                ],
+                "bathrooms": [
+                    "1",
+                    "2"
+                ],
+                "furnishing": [
+                    "Furnished",
+                    "Semi-Furnished",
+                    "Unfurnished"
+                ],
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedBy": [
+                   
+                ],
+                "bachlores": [
+                    "Allowed",
+                    "Not Allowed"
+                ],
+                "facing": [
+                    "North",
+                    "East",
+                    "South",
+                    "West",
+                    "Northeast",
+                    "Southeast",
+                    "Southwest",
+                    "Northwest"
+                ]
+            },
+            {
+                "id": "103",
+                "label": "Office",
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedby": [
+                    "Builder",
+                    "Dealer",
+                    "Owner"
+                ],
+                "furnishing": [
+                    "Unfurnished",
+                    "Semi-Furnished",
+                    "Fully-Furnished"
+                ],"washrooms": [
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "id": "104",
+                "label": "Shops",
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedby": [
+                    "Builder",
+                    "Dealer",
+                    "Owner"
+                ],
+                "furnishing": [
+                    "Unfurnished",
+                    "Semi-Furnished",
+                    "Fully-Furnished"
+                ],"washrooms": [
+                    "2",
+                    "3"
+                ]
             }
         ]
     },
@@ -28,9 +137,83 @@
             {
                 "id": "201",
                 "label": "House",
-                "bhk": ["2 BHK", "3 BHK", "4 BHK"],
-                "bathrooms": ["2", "3"],
-                "furnishing": ["Unfurnished", "Semi-Furnished", "Fully-Furnished"]
+                "bhk": [
+                    "2 BHK",
+                    "3 BHK",
+                    "4 BHK"
+                ],
+                "bathrooms": [
+                    "2",
+                    "3"
+                ],
+                "furnishing": [
+                    "Unfurnished",
+                    "Semi-Furnished",
+                    "Fully-Furnished"
+                ],
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedBy": [
+                    "Builder",
+                    "Dealer",
+                    "Owner"
+                ],
+                "projectstatus": [
+                    "New Lunch",
+                    "Ready to Move",
+                    "Under Construction"
+                ],
+                "facing": [
+                    "North",
+                    "East",
+                    "South",
+                    "West",
+                    "Northeast",
+                    "Southeast",
+                    "Southwest",
+                    "Northwest"
+                ]
+            },
+            {
+                "id": "202",
+                "label": "Apartment",
+                "bhk": [
+                    "1 BHK",
+                    "2 BHK",
+                    "3 BHK"
+                ],
+                "bathrooms": [
+                    "1",
+                    "2"
+                ],
+                "furnishing": [
+                    "Furnished",
+                    "Semi-Furnished",
+                    "Unfurnished"
+                ],
+                "carParking": [
+                    "0",
+                    "1",
+                    "3"
+                ],
+                "listedBy": [
+                    "Builder",
+                    "Dealer",
+                    "Owner"
+                ],
+                "facing": [
+                    "North",
+                    "East",
+                    "South",
+                    "West",
+                    "Northeast",
+                    "Southeast",
+                    "Southwest",
+                    "Northwest"
+                ]
             }
         ]
     }

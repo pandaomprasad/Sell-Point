@@ -1,0 +1,38 @@
+[
+               {
+                   "jobTitle": "Data Entry",
+                   "details": {
+                       "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                       "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                   }
+               },
+               {
+                   "jobTitle": "Bank PO",
+                   "details": {
+                       "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                       "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                   }
+               },
+               {
+                   "jobTitle": "Cook",
+                   "details": {
+                       "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                       "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                   }
+               },
+               {
+                   "jobTitle": "Graphic Designer",
+                   "details": {
+                       "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                       "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                   }
+               },
+               {
+                   "jobTitle": "Delivery Driver",
+                   "details": {
+                       "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                       "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                   }
+               }
+           ]
+           
