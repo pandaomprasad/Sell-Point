@@ -1,0 +1,38 @@
+[
+               {
+                   "category": "Men",
+                   "details": {
+                       "clothing": ["Shirts", "Trousers", "Jackets"],
+                       "style": ["Casual", "Formal", "Sports"]
+                   }
+               },
+               {
+                   "category": "Women",
+                   "details": {
+                       "clothing": ["Dresses", "Blouses", "Skirts"],
+                       "style": ["Bohemian", "Elegant", "Streetwear"]
+                   }
+               },
+               {
+                   "category": "Kids",
+                   "details": {
+                       "clothing": ["T-shirts", "Shorts", "Onesies"],
+                       "style": ["Playful", "Comfortable", "Cartoon-themed"]
+                   }
+               },
+               {
+                   "category": "Accessories",
+                   "details": {
+                       "clothing": ["Hats", "Belts", "Scarves"],
+                       "style": ["Trendy", "Classic", "Funky"]
+                   }
+               },
+               {
+                   "category": "Others",
+                   "details": {
+                       "clothing": ["Custom", "Vintage", "Handmade"],
+                       "style": ["Unique", "Retro", "Experimental"]
+                   }
+               }
+           ]
+           

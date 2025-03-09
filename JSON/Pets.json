@@ -1,0 +1,45 @@
+[
+               {
+                   "petType": "Dog",
+                   "details": {
+                       "size": ["Small", "Medium", "Large"],
+                       "diet": ["Omnivore", "Carnivore"]
+                   }
+               },
+               {
+                   "petType": "Cat",
+                   "details": {
+                       "size": ["Small", "Medium"],
+                       "diet": ["Carnivore"]
+                   }
+               },
+               {
+                   "petType": "Bird",
+                   "details": {
+                       "size": ["Small", "Medium", "Large"],
+                       "diet": ["Herbivore", "Omnivore"]
+                   }
+               },
+               {
+                   "petType": "Fish",
+                   "details": {
+                       "size": ["Tiny", "Small", "Medium"],
+                       "diet": ["Carnivore", "Omnivore", "Herbivore"]
+                   }
+               },
+               {
+                   "petType": "Rabbit",
+                   "details": {
+                       "size": ["Small", "Medium"],
+                       "diet": ["Herbivore"]
+                   }
+               },
+               {
+                   "petType": "Others",
+                   "details": {
+                       "size": ["Tiny", "Small", "Medium", "Large"],
+                       "diet": ["Herbivore", "Carnivore", "Omnivore"]
+                   }
+               }
+           ]
+           

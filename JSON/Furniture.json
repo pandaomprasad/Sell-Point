@@ -1,0 +1,73 @@
+[
+               {
+                   "furnitureType": "Chair",
+                   "details": {
+                       "material": ["Wood", "Metal", "Plastic"],
+                       "style": ["Modern", "Classic", "Rustic"]
+                   }
+               },
+               {
+                   "furnitureType": "Table",
+                   "details": {
+                       "material": ["Wood", "Glass", "Marble"],
+                       "style": ["Minimalist", "Industrial", "Traditional"]
+                   }
+               },
+               {
+                   "furnitureType": "Sofa",
+                   "details": {
+                       "material": ["Leather", "Fabric", "Velvet"],
+                       "style": ["Contemporary", "Mid-century", "Chesterfield"]
+                   }
+               },
+               {
+                   "furnitureType": "Bed",
+                   "details": {
+                       "material": ["Wood", "Metal", "Upholstered"],
+                       "style": ["Platform", "Canopy", "Sleigh"]
+                   }
+               },
+               {
+                   "furnitureType": "Cabinet",
+                   "details": {
+                       "material": ["Wood", "Glass", "Steel"],
+                       "style": ["Modern", "Vintage", "Shaker"]
+                   }
+               },
+               {
+                   "furnitureType": "Dining",
+                   "details": {
+                       "material": ["Wood", "Glass", "Marble"],
+                       "style": ["Formal", "Casual", "Farmhouse"]
+                   }
+               },
+               {
+                   "furnitureType": "Home Decor & Garden",
+                   "details": {
+                       "material": ["Ceramic", "Metal", "Wood"],
+                       "style": ["Bohemian", "Coastal", "Rustic"]
+                   }
+               },
+               {
+                   "furnitureType": "Wardrobes",
+                   "details": {
+                       "material": ["Wood", "MDF", "Glass"],
+                       "style": ["Sliding", "Hinged", "Walk-in"]
+                   }
+               },
+               {
+                   "furnitureType": "Kids Furniture",
+                   "details": {
+                       "material": ["Wood", "Plastic", "Fabric"],
+                       "style": ["Playful", "Minimalist", "Themed"]
+                   }
+               },
+               {
+                   "furnitureType": "Others",
+                   "details": {
+                       "material": ["Wood", "Metal", "Glass", "Plastic"],
+                       "style": ["Eclectic", "Bohemian", "Transitional"]
+                   }
+               }
+           ]
+           

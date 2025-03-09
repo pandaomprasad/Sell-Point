@@ -33,6 +33,13 @@
                        "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
                        "positionType": ["Full-time","Contract","Part-time","Permanent"]
                    }
-               }
+               },
+               {
+                "jobTitle": "Others",
+                "details": {
+                    "salaryPeriod": ["Monthly","Hourley","Weekly","Yearly"],
+                    "positionType": ["Full-time","Contract","Part-time","Permanent"]
+                }
+            }
            ]
            
